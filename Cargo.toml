@@ -1,4 +1,5 @@
 [workspace]
 members = [
     "puzzle1",
+    "puzzle2",
 ]

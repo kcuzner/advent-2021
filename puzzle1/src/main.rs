@@ -6,7 +6,10 @@ fn main() {
     let mut increased = 0;
     let mut last = 0;
     for line in stdin.lock().lines() {
-        let value = line.expect("No line?").parse::<u32>().expect("Invalid integer");
+        let value = line
+            .expect("No line?")
+            .parse::<u32>()
+            .expect("Invalid integer");
         if value > last && !first {
             increased += 1;
         }
