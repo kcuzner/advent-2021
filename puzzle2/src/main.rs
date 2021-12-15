@@ -4,7 +4,7 @@ use std::io::{self, BufRead};
 fn main() {
     let stdin = io::stdin();
     let re = Regex::new(r"^([a-z]+)\s(\d+)$").expect("Invalid regex");
-    let (mut horizontal, mut depth) = (0, 0);
+    let (mut horizontal, mut depth, mut aim) = (0, 0, 0);
     for line in stdin.lock().lines() {
         let line_str = line.expect("No line?");
         let capture = re.captures(&line_str).expect("No capture");
@@ -17,12 +17,13 @@ fn main() {
         match capture.get(1).expect("No 1st group").as_str() {
             "forward" => {
                 horizontal += incr;
+                depth += aim * incr;
             }
             "down" => {
-                depth += incr;
+                aim += incr;
             }
             "up" => {
-                depth -= incr;
+                aim -= incr;
             }
             _ => {
                 panic!("Unknow direction")
