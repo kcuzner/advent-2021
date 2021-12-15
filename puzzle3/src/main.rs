@@ -22,7 +22,7 @@ fn main() {
             }
         })
         .sum();
-    let mask = 2_i32.pow(size as u32)-1;
+    let mask = 2_i32.pow(size as u32) - 1;
     let epsilon = (!gamma) & mask;
     println!("{} * {} = {}", gamma, epsilon, gamma * epsilon);
 }
